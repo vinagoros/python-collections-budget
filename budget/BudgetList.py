@@ -17,14 +17,17 @@ class BudgetList:
             self.overages.append(item)
             self.sum_overages += item
 
+#modifies return on len(class instance) to specified - in this case
     def __len__(self):
         return len(self.expenses) + len(self.overages)
 
+# modifies return on iter(class instance) - iterable object - allows to iterate over a custom iterable
+    # - affects for and while
     def __iter__(self):
         self.iter_e = iter(self.expenses)
         self.iter_o = iter(self.overages)
         return self
-
+#modifies how iterables are run on class - if iterable e stops, goes to iterable o
     def __next__(self):
         try:
             return self.iter_e.__next__()
